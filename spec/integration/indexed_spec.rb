@@ -51,8 +51,15 @@ describe DataMapper::Is::Indexed do
   describe "Model.[]" do
     subject { Atom }
 
-    it "should still provide the original behavior" do
+    it "should still allow selecting the nth resource" do
       subject[0].symbol.should == 'He'
+    end
+
+    it "should still allowing selecting ranges of resources" do
+      resources = subject[0,1]
+
+      resources[0].symbol.should == 'He'
+      resources[1].symbol.should == 'Ne'
     end
 
     it "should allow querying properties with unique indexes" do

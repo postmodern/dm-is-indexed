@@ -16,13 +16,14 @@ module DataMapper
         #   The key to use when querying the Model. If the key is an Integer
         #   it will select the nth resource of the Model.
         #
-        # @return [DataMapper::Resource, nil]
-        #   The selected resource.
+        # @return [DataMapper::Collection, DataMapper::Resource, nil]
+        #   The selected resource or resources.
         #
-        def [](key)
-          if key.kind_of?(Integer)
-            super(key)
+        def [](*keys)
+          if (keys.length > 1 || keys[0].kind_of?(Integer))
+            super(*keys)
           else
+            key = keys[0]
             resource = nil
 
             properties.each do |field|
