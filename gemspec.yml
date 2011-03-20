@@ -1,0 +1,15 @@
+name: dm-is-indexed
+version: 0.1.0
+summary: "TODO: Summary"
+description: "TODO: Description"
+license: MIT
+authors: Postmodern
+homepage: http://github.com/postmodern/dm-is-indexed
+has_yard: true
+
+dependencies:
+  dm-core: ~> 1.0
+
+development_dependencies:
+  bundler: ~> 1.0.0
+  yard: ~> 0.6.0
