@@ -14,21 +14,36 @@ TODO: Description
 
     require 'dm-is-indexed'
 
-    class User
+    class Atom
 
       include DataMapper::Resource
 
+      is :indexed
+
       property :id, Serial
+
+      property :symbol, String, :unique => true
 
       property :name, String, :unique => true
 
+      property :atomic_weight, Float, :index => true
+
     end
 
-    User[10]
-    # => #<User: @id=10 @name="alice">
+    # Traditional Array style access
+    Atom[0]
+    # => #<Atom: @id=1 @symbol="He" @name="Helium" @atomic_weight=4.002602>
 
-    User["eve"]
-    # => #<User: @id=20 @name="eve">
+    # Query resources based on their unique indexed properties
+    Atom["Kr"]
+    # => #<Atom: @id=4 @symbol="Kr" @name="Krpton" @atomic_weight=83.798>
+
+    Atom["Krpton"]
+    # => #<Atom: @id=4 @symbol="Kr" @name="Krpton" @atomic_weight=83.798>
+
+    # Query resources based on their non-unique indexed properties
+    Atom[83.798]
+    # => #<Atom: @id=4 @symbol="Kr" @name="Krpton" @atomic_weight=83.798>
 
 ## Requirements
 
