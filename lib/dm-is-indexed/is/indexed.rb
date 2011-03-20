@@ -23,20 +23,16 @@ module DataMapper
           if key.kind_of?(Integer)
             super(key)
           else
-            fields = []
-
-            properties.each do |property|
-              if (property.index || property.unique?)
-                if property.primitive?(key)
-                  fields << property.name
-                end
-              end
-            end
-
             resource = nil
 
-            fields.each do |field|
-              break if (resource = first(field => key))
+            properties.each do |field|
+              if (field.index || field.unique?)
+                if field.primitive?(key)
+                  resource = first(field => key)
+
+                  break if resource
+                end
+              end
             end
 
             return resource

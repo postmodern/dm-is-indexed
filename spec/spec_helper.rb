@@ -4,6 +4,7 @@ require 'dm-core/spec/lib/adapter_helpers'
 
 require 'dm-is-indexed'
 
+DataMapper::Logger.new(STDERR, :debug) if ENV['DEBUG']
 DataMapper::Spec.setup
 
 RSpec.configure do |config|
