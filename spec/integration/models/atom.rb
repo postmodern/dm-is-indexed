@@ -1,4 +1,5 @@
 require 'dm-core'
+require 'dm-types'
 require 'dm-is-indexed'
 
 class Atom
@@ -14,5 +15,7 @@ class Atom
   property :name, String, :unique => true
 
   property :atomic_weight, Float, :index => true
+
+  property :url, URI, :index => true
 
 end

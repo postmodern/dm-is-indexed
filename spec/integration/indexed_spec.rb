@@ -8,43 +8,50 @@ describe DataMapper::Is::Indexed do
     Atom.create(
       :symbol => 'He',
       :name => 'Helium',
-      :atomic_weight => 4.002602
+      :atomic_weight => 4.002602,
+      :url => 'http://www.webelements.com/helium/'
     )
 
     Atom.create(
       :symbol => 'Ne',
       :name => 'Neon',
-      :atomic_weight => 20.1797
+      :atomic_weight => 20.1797,
+      :url => 'http://www.webelements.com/neon/'
     )
 
     Atom.create(
       :symbol => 'Ar',
       :name => 'Argon',
-      :atomic_weight => 39.948
+      :atomic_weight => 39.948,
+      :url => 'http://www.webelements.com/argon/'
     )
 
     Atom.create(
       :symbol => 'Kr',
       :name => 'Krypton',
-      :atomic_weight => 83.798
+      :atomic_weight => 83.798,
+      :url => 'http://www.webelements.com/krypton/'
     )
 
     Atom.create(
       :symbol => 'Xe',
       :name => 'Xeon',
-      :atomic_weight => 131.293
+      :atomic_weight => 131.293,
+      :url => 'http://www.webelements.com/xenon/'
     )
 
     Atom.create(
       :symbol => 'Rn',
       :name => 'Radon',
-      :atomic_weight => 222.0
+      :atomic_weight => 222.0,
+      :url => 'http://www.webelements.com/radon/'
     )
 
     Atom.create(
       :symbol => 'Uuo',
       :name => 'Ununoctium',
-      :atomic_weight => 294.0
+      :atomic_weight => 294.0,
+      :url => 'http://www.webelements.com/ununoctium/'
     )
   end
 
@@ -83,6 +90,10 @@ describe DataMapper::Is::Indexed do
 
     it "should select the properties to query based on the key type" do
       subject[83.798].symbol.should == 'Kr'
+    end
+
+    it "should select the properties to query based on supported key types" do
+      subject['http://www.webelements.com/ununoctium/'].symbol.should == 'Uuo'
     end
   end
 end

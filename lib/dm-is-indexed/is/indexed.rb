@@ -33,8 +33,8 @@ module DataMapper
 
               properties.each do |field|
                 if (field.index || field.unique?)
-                  if field.primitive?(key)
-                    resource = first(field => field.typecast(key))
+                  if field.valid?(key)
+                    resource = first(field => key)
 
                     break if resource
                   end

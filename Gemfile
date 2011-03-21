@@ -98,6 +98,10 @@ end
 
 gem 'dm-core',	DM_VERSION, :git => "#{DATAMAPPER}/dm-core.git"
 
+group :test do
+  gem 'dm-types', DM_VERSION, :git => "#{DATAMAPPER}/dm-types.git"
+end
+
 group :development do
   gem 'rake',		    '~> 0.8.7'
 
