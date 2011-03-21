@@ -12,31 +12,37 @@ module DataMapper
         #
         # Allows querying the indexed properties of a Model.
         #
-        # @param [Integer, Object] key
+        # @param [Array, Range, Integer, Object] keys
         #   The key to use when querying the Model. If the key is an Integer
-        #   it will select the nth resource of the Model.
+        #   or a Range, it will select multiple Resources of the Model.
         #
         # @return [DataMapper::Collection, DataMapper::Resource, nil]
-        #   The selected resource or resources.
+        #   The selected Resource or Resources.
         #
         def [](*keys)
-          if (keys.length > 1 || keys[0].kind_of?(Integer))
+          if keys.length > 1
             super(*keys)
           else
             key = keys[0]
-            resource = nil
+            
+            case key
+            when Integer, Range
+              super(*keys)
+            else
+              resource = nil
 
-            properties.each do |field|
-              if (field.index || field.unique?)
-                if field.primitive?(key)
-                  resource = first(field => key)
+              properties.each do |field|
+                if (field.index || field.unique?)
+                  if field.primitive?(key)
+                    resource = first(field => key)
 
-                  break if resource
+                    break if resource
+                  end
                 end
               end
-            end
 
-            return resource
+              return resource
+            end
           end
         end
       end

@@ -55,8 +55,15 @@ describe DataMapper::Is::Indexed do
       subject[0].symbol.should == 'He'
     end
 
-    it "should still allowing selecting ranges of resources" do
+    it "should still allowing selecting multiple resources" do
       resources = subject[0,1]
+
+      resources[0].symbol.should == 'He'
+      resources[1].symbol.should == 'Ne'
+    end
+
+    it "should still allowing selecting ranges of resources" do
+      resources = subject[0..1]
 
       resources[0].symbol.should == 'He'
       resources[1].symbol.should == 'Ne'
