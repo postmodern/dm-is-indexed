@@ -1,4 +1,4 @@
-### 0.1.0 / 2011-03-20
+### 0.1.0 / 2011-03-21
 
-* Initial release:
+* Initial release.
 
