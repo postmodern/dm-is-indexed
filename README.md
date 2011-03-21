@@ -3,6 +3,7 @@
 * [Homepage](http://github.com/postmodern/dm-is-indexed#readme)
 * [Issues](http://github.com/postmodern/dm-is-indexed/issues)
 * [Documentation](http://rubydoc.info/gems/dm-is-indexed/frames)
+* [Email](mailto:postmodern.mod3 at gmail.com)
 
 ## Description
 
