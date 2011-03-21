@@ -1,7 +1,10 @@
 name: dm-is-indexed
 version: 0.1.0
-summary: "TODO: Summary"
-description: "TODO: Description"
+summary: Query DataMapper Resources via their indexed properties.
+description:
+  dm-is-indexed overloads the Model[] method, and allows querying Resources
+  using their indexed properties.
+
 license: MIT
 authors: Postmodern
 homepage: http://github.com/postmodern/dm-is-indexed
