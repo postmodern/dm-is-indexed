@@ -1,5 +1,5 @@
 name: dm-is-indexed
-version: 0.1.0
+version: 0.1.1
 summary: Query DataMapper Resources via their indexed properties.
 description:
   dm-is-indexed overloads the Model[] method, and allows querying Resources
